@@ -2,7 +2,7 @@
 
 	<h2>Create an Account</h2>
 
-	<?php echo form_open('http://giantfist.com/asl/register'); ?>
+	<?php echo form_open(base_url().'admin'); ?>
 	<div class="errors"><p><?php echo validation_errors(); ?></p></div>
 	<p>
 	<?php echo form_label('Email Address: ', 'email_address'); ?>

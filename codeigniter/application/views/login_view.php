@@ -1,6 +1,6 @@
 <section id="login" class="one-half column">
 	<h2>Login</h2>
-	<?php echo form_open('http://giantfist.com/asl/admin'); ?>
+	<?php echo form_open(base_url().'admin'); ?>
 
 	<p>
 	<?php echo form_label('Email Address: ', 'email_address'); ?>
