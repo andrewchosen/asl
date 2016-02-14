@@ -20,10 +20,11 @@ class Dashboard_model extends CI_Model
 	    return $q->result();
 	}
 
-	public function update_profile($user){
+	public function update_profile($user, $email, $first_name, $last_name, $bio){
 		// update statement
-	    $sql = "SELECT email_address, first_name, last_name, bio, date_created FROM users WHERE email_address = ?";
-	    $q = $this->db->query($sql, $user);
+	    $sql = "UPDATE users SET email_address=?, first_name=?, last_name=?, bio=? WHERE email_address = ?";
+	    $q = $this->db->query($sql, array($email, $first_name, $last_name, $bio, $user));
 	    return $q->result();
 	}
 }
+
