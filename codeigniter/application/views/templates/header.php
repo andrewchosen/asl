@@ -18,7 +18,12 @@
 					<li><a href="#">Clients</a></li>
 					<li><a href="#">Projects</a></li>
 					<li><a href="#">Profile</a></li>
-					<li><a href="<?php echo base_url(); ?>logout">Logout</a></li>
+					<?php
+					$session_user = $this->session->userdata('email_address');
+					if (isset($session_user)) {
+						echo '<li><a href="' . base_url() . 'logout">Logout</a></li>';
+					} ?>
+					
 				</ul>
 			</nav>
 		</div>
