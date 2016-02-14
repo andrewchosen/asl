@@ -54,6 +54,7 @@ class Admin extends CI_Controller {
 		$this->session->sess_destroy();
 		$this->load->view('templates/header');
 		$this->load->view('login_view');
+		$this->load->view('register');
 		$this->load->view('templates/footer');
 	}
 
@@ -64,7 +65,7 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('first_name', 'First Name', 'required|min_length[1]|max_length[50]');
 		$this->form_validation->set_rules('last_name', 'Last Name', 'required|min_length[1]|max_length[50]');
 		$this->form_validation->set_rules('password2', 'Password', 'required|min_length[4]');
-		$this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[password]');
+		$this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[password2]');
 		if ( $this->form_validation->run() !== false ) {
 			$this->load->model('admin_model');
 				$res = $this
@@ -84,6 +85,7 @@ class Admin extends CI_Controller {
 		}
 		$this->load->view('templates/header');
 		$this->load->view('register');
+		$this->load->view('login_view');
 		$this->load->view('templates/footer');
 	}
 }

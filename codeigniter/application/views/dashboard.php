@@ -1,29 +1,5 @@
 <h1><?php echo $user[1]->first_name."'s Dashboard"; ?></h1>
-<!-- <section id="profile" class="one-third column">
-	<h2>Profile</h2>
-	<ul>
-		<li>
-			<strong>First Name</strong>
-			<?php echo $user[1]->first_name ?>
-		</li>
-		<li>
-			<strong>Last Name</strong>
-			<?php echo $user[1]->last_name ?>
-		</li>
-		<li>
-			<strong>Email Address</strong>
-			<?php echo $user[1]->email_address ?>
-		</li>
-		<li>
-			<strong>Bio</strong>
-			<?php echo $user[1]->bio ?>
-		</li>
-		<li>
-			<strong>Joined</strong>
-			<?php echo $user[1]->date_created ?>
-		</li>
-	</ul>
-</section> -->
+
 <div class="class">
 <section id="messages" class="one-half column">
 	<h2>Message Board</h2>
@@ -71,6 +47,7 @@
 	</article>
 </section>
 </div>
+<div class="row">
 <section id="clients" class="one-half column">
 	<h2>Clients</h2>
 	<article>
