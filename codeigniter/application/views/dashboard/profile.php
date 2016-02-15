@@ -33,4 +33,5 @@
 	</p>
 
 	<?php form_close(); ?>
+	<?php echo validation_errors(); ?>
 </section>
