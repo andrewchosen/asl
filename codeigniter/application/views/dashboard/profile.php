@@ -1,5 +1,6 @@
 <section id="profile">
 	<h2>Profile</h2>
+	<?php echo $this->session->flashdata('success_msg'); ?>
 	<p><strong>Member Since:</strong> <?php echo $user[1]->date_created ?></p>
 
 	<?php echo form_open(base_url().'dashboard/profile'); ?>
@@ -8,7 +9,6 @@
 	<?php echo form_error('email_address2'); ?>
 	<?php echo form_input('email_address2', $user[1]->email_address, 'id="email_address" class="u-full-width"'); ?>
 	</p>
-
 <div class="row">
 	<div class="one-half column">
 	<?php echo form_label('First Name: ', 'first_name'); ?>

@@ -6,6 +6,13 @@ body {
 	background: #d5dee1;
 }
 
+.success {
+	padding: 8px 12px;
+	border: 1px solid #00cc00;
+	color: #00cc00;
+	margin-bottom: 20px;
+}
+
 .errors p {
 	color: #CE272F;
 }

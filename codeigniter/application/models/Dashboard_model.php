@@ -24,6 +24,7 @@ class Dashboard_model extends CI_Model
 		// update statement
 	    $this->db->where('email_address', $user);
 		$this->db->update('users', $info);
+		$this->session->set_flashdata('success_msg', '<div class="success">Your profile has been successfully updated.</div>');
 	}
 }
 

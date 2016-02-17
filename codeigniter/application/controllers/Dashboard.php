@@ -41,7 +41,8 @@ class Dashboard extends CI_Controller {
 				$info = array(
 					'first_name'=>$this->input->post('first_name'),
 					'last_name'=>$this->input->post('last_name'),
-					'email_address'=>$this->input->post('email_address')
+					'email_address'=>$this->input->post('email_address2'),
+					'bio'=>$this->input->post('bio')
 					);
 				$this->load->model('dashboard_model');
 					$res = $this
@@ -54,6 +55,7 @@ class Dashboard extends CI_Controller {
 					# Account exists
 					$this->session->set_userdata('email_address',$this->input->post('email_address2'));
 					redirect('dashboard/profile');
+					$message = "Your profile has been successfully updated.";
 				}
 			}
 		}
