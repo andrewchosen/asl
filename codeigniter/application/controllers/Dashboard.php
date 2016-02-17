@@ -22,6 +22,8 @@ class Dashboard extends CI_Controller {
 			array_push($data['user'], $key, $value);
 		}
 
+		print_r($data);
+
 		$this->load->view('templates/header');
 		$this->load->view('dashboard', $data);
 		$this->load->view('templates/footer');

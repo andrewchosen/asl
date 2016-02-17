@@ -22,7 +22,7 @@ class Dashboard_model extends CI_Model
 
 	public function update_profile($user, $info){
 		// update statement
-	    $this->db->where('email_address', $this->session->userdata('email_address'));
+	    $this->db->where('email_address', $user);
 		$this->db->update('users', $info);
 	}
 }
