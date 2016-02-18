@@ -21,3 +21,10 @@
 [12-Feb-2016 00:27:39 UTC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in /home/giantfist/codeigniter/application/controllers/Admin.php on line 44
 [12-Feb-2016 22:37:14 UTC] PHP Fatal error:  Call to a member function set_rules() on null in /home/giantfist/codeigniter/application/controllers/Admin.php on line 61
 [12-Feb-2016 22:41:25 UTC] PHP Fatal error:  Call to undefined function register() in /home/giantfist/codeigniter/application/controllers/Admin.php on line 17
+[18-Feb-2016 18:28:53 UTC] PHP Fatal error:  Call to a member function set_error_delimiters() on null in /home/giantfist/codeigniter/application/controllers/Dashboard.php on line 11
+[18-Feb-2016 18:29:19 UTC] PHP Fatal error:  Call to a member function set_error_delimiters() on null in /home/giantfist/codeigniter/application/controllers/Dashboard.php on line 77
+[18-Feb-2016 18:29:22 UTC] PHP Fatal error:  Call to a member function set_error_delimiters() on null in /home/giantfist/codeigniter/application/controllers/Dashboard.php on line 77
+[18-Feb-2016 18:29:23 UTC] PHP Fatal error:  Call to a member function set_error_delimiters() on null in /home/giantfist/codeigniter/application/controllers/Dashboard.php on line 77
+[18-Feb-2016 18:29:26 UTC] PHP Fatal error:  Call to a member function set_error_delimiters() on null in /home/giantfist/codeigniter/application/controllers/Dashboard.php on line 77
+[18-Feb-2016 18:32:41 UTC] PHP Fatal error:  Call to undefined method Dashboard_model::create_message() in /home/giantfist/codeigniter/application/controllers/Dashboard.php on line 92
+[18-Feb-2016 19:00:26 UTC] PHP Fatal error:  Call to a member function event() on null in /home/giantfist/codeigniter/application/views/dashboard/messages.php on line 3

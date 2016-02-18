@@ -14,16 +14,18 @@
 			<nav class="two-thirds column">
 				<ul>
 					<li><a href="<?php echo base_url(); ?>">Home</a></li>
-					<li><a href="' . base_url() . 'dashboard/messages">Messages</a></li>
+					<?php
+					$session_user = $this->session->userdata('email_address');
+					if (isset($session_user)) {
+						echo '<li><a href="' . base_url() . 'dashboard/messages">Messages</a></li>';
+					} ?>
 					<li><a href="#">Clients</a></li>
 					<li><a href="#">Projects</a></li>
 					<?php
-					$session_user = $this->session->userdata('email_address');
 					if (isset($session_user)) {
 						echo '<li><a href="' . base_url() . 'dashboard/profile">Profile</a></li>';
 					} ?>
 					<?php
-					$session_user = $this->session->userdata('email_address');
 					if (isset($session_user)) {
 						echo '<li><a href="' . base_url() . 'logout">Logout</a></li>';
 					} ?>
