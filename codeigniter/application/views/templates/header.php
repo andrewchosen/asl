@@ -14,7 +14,7 @@
 			<nav class="two-thirds column">
 				<ul>
 					<li><a href="<?php echo base_url(); ?>">Home</a></li>
-					<li><a href="#">Messages</a></li>
+					<li><a href="' . base_url() . 'dashboard/messages">Messages</a></li>
 					<li><a href="#">Clients</a></li>
 					<li><a href="#">Projects</a></li>
 					<?php

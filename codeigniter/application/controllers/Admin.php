@@ -36,8 +36,6 @@ class Admin extends CI_Controller {
 					# Account exists
 					$this->session->set_userdata('email_address',$this->input->post('email_address'));
 					redirect('dashboard');
-				}else{
-					echo "User could not be authenticated.";
 				}
 			}
 			$this->load->view('templates/header');

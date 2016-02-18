@@ -1,5 +1,6 @@
 <section id="login" class="one-half column">
 	<h2>Login</h2>
+	<?php echo $this->session->flashdata('error_msg'); ?>
 	<?php echo form_open(base_url().'admin'); ?>
 
 	<p>

@@ -26,18 +26,26 @@ class Admin_model extends CI_Model
 		$q = $this->db->query($sql, array($email));
 
 		$row = $q->row();
-		$stored_hash = $row->password;
 
-		if ($this->bcrypt->check_password($password, $stored_hash))
-		{
-		    // Password does match stored password.
-		    return $q->row();
+		if($row){
+			$stored_hash = $row->password;
+			if ($this->bcrypt->check_password($password, $stored_hash))
+			{
+			    // Password does match stored password.
+			    return $q->row();
+			}
+			else
+			{
+			    // Password does not match stored password.
+			    $this->session->set_flashdata('error_msg', '<div class="error message">Your username and/or password are invalid. Please try again.</div>');
+			    return false;
+			}
+		}else{
+			#user does not exist
+			$this->session->set_flashdata('error_msg', '<div class="error message">A user with this email address does not exist.</div>');
+			return false;
 		}
-		else
-		{
-		    // Password does not match stored password.
-		    return false;
-		}
+
 
 	}
 }

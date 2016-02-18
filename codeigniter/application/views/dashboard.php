@@ -5,15 +5,15 @@
 	<h2>Message Board</h2>
 	<article>
 		<h3><a href="#">Lorem ipsum things will go here showing the latest message...</a></h3>
-		<p>POSTED BY ANDREW LANCASTER ON 2/6/2016</p>
+		<p class="sub">POSTED BY ANDREW LANCASTER ON 2/6/2016</p>
 	</article>
 	<article>
 		<h3><a href="#">Lorem ipsum things will go here showing the latest message...</a></h3>
-		<p>POSTED BY ANDREW LANCASTER ON 2/6/2016</p>
+		<p class="sub">POSTED BY ANDREW LANCASTER ON 2/6/2016</p>
 	</article>
 	<article>
 		<h3><a href="#">Lorem ipsum things will go here showing the latest message...</a></h3>
-		<p>POSTED BY ANDREW LANCASTER ON 2/6/2016</p>
+		<p class="sub">POSTED BY ANDREW LANCASTER ON 2/6/2016</p>
 	</article>
 </section>
 <section id="projects" class="one-half column">

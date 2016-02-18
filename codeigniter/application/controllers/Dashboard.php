@@ -22,8 +22,6 @@ class Dashboard extends CI_Controller {
 			array_push($data['user'], $key, $value);
 		}
 
-		print_r($data);
-
 		$this->load->view('templates/header');
 		$this->load->view('dashboard', $data);
 		$this->load->view('templates/footer');
@@ -50,7 +48,6 @@ class Dashboard extends CI_Controller {
 						->update_profile(
 							$session_user,
 							$info);
-				echo "string";
 				if ($res !== FALSE) {
 					# Account exists
 					$this->session->set_userdata('email_address',$this->input->post('email_address2'));
@@ -72,6 +69,12 @@ class Dashboard extends CI_Controller {
 
 		$this->load->view('templates/header');
 		$this->load->view('dashboard/profile', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function messages(){
+		$this->load->view('templates/header');
+		$this->load->view('dashboard/messages');
 		$this->load->view('templates/footer');
 	}
 }

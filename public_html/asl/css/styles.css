@@ -6,11 +6,21 @@ body {
 	background: #d5dee1;
 }
 
-.success {
+.message {
 	padding: 8px 12px;
-	border: 1px solid #00cc00;
-	color: #00cc00;
 	margin-bottom: 20px;
+	border-width: 1px;
+	border-style: solid;
+}
+
+.success {
+	border-color: #00cc00;
+	color: #00cc00;
+}
+
+.error {
+	color: #CE272F;
+	border-color: #CE272F;
 }
 
 .errors p {
@@ -110,7 +120,7 @@ h1 {
 	margin-bottom: 6px;
 }
 
-#messages article p {
+#messages article p.sub {
 	font-size: .7em;
 	color: #747474;
 }
