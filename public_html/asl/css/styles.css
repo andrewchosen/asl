@@ -105,7 +105,7 @@ h1 {
     background: #fff;
 }
 
-/*MESSAGE BOARD*/
+/*MESSAGES PANEL*/
 
 #messages article {
 	padding: 12px 14px;
@@ -123,6 +123,14 @@ h1 {
 #messages article p.sub {
 	font-size: .7em;
 	color: #747474;
+}
+
+/*MESSAGES PAGE*/
+
+#message-board article {
+	padding: 2.5%;
+	background: #fff;
+	margin-bottom: 2.5%;
 }
 
 /*PROJECTS*/
