@@ -30,21 +30,38 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function profile(){
+		$this->load->model('dashboard_model');
+		$session_user = $this->session->userdata('email_address');
 		if($this->input->post('update')){
-			$session_user = $this->session->userdata('email_address');
+			$config['upload_path']          = './uploads/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 1024;
+            $config['max_width']            = 1024;
+            $config['max_height']           = 768;
+            $config['overwrite']			= TRUE;
+
+            $this->load->library('upload', $config);
 			$this->load->library('form_validation');
+			echo $this->upload->data();
 			$this->form_validation->set_rules('email_address2', 'Email Address', 'required|valid_email');
 			$this->form_validation->set_rules('first_name', 'First Name', 'required|max_length[50]');
 			$this->form_validation->set_rules('last_name', 'Last Name', 'required|max_length[50]');
 			$this->form_validation->set_rules('bio', 'Bio', 'max_length[255]');
+			$file = NULL;
+			echo $this->upload->do_upload('avatar');
+			if ( ! $this->upload->do_upload('avatar')){
+                echo $this->upload->display_errors();
+            }else{
+                $file = $this->upload->file_name;
+            }
 			if ( $this->form_validation->run() !== false ) {
 				$info = array(
 					'first_name'=>$this->input->post('first_name'),
 					'last_name'=>$this->input->post('last_name'),
 					'email_address'=>$this->input->post('email_address2'),
-					'bio'=>$this->input->post('bio')
+					'bio'=>$this->input->post('bio'),
+					'avatar'=>$file
 					);
-				$this->load->model('dashboard_model');
 					$res = $this
 						->dashboard_model
 						->update_profile(
@@ -58,12 +75,9 @@ class Dashboard extends CI_Controller {
 				}
 			}
 		}
-		$session_user = $this->session->userdata('email_address');
-		$this->load->model('dashboard_model');
 		$result = $this
 					->dashboard_model
-					->view_profile(
-						$session_user);
+					->view_profile($session_user);
 		$data['user'] = array();
 		foreach ($result as $key => $value){
 			array_push($data['user'], $key, $value);
