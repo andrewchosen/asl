@@ -51,9 +51,30 @@ class Dashboard_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('messages');
 		$this->db->join('users', 'users.id = messages.userid');
-		$this->db->where('email_address', $user);
+		$this->db->order_by('created', 'DESC');
 		$query = $this->db->get();
 		return $query->result();
+	}
+
+	public function delete_message($messageid){
+		$this->db->where('messageid', $messageid);
+		$this->db->delete('messages');
+	}
+
+	public function retrieve_message($messageid){
+		$this->db->select('*');
+		$this->db->from('messages');
+		$this->db->where('messageid', $messageid);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function edit_message($messageid, $info){
+		// update
+	    $this->db->where('messageid', $messageid);
+		$this->db->update('messages', $info);
+		$this->session->set_flashdata('success_msg', '<div class="success message">Your message has been successfully updated.</div>');
+
 	}
 }
 

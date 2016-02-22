@@ -22,6 +22,8 @@ class Dashboard extends CI_Controller {
 			array_push($data['user'], $key, $value);
 		}
 
+		$data['messages'] = $this->dashboard_model->view_messages($session_user);
+
 		$this->load->view('templates/header');
 		$this->load->view('dashboard', $data);
 		$this->load->view('templates/footer');
@@ -77,7 +79,6 @@ class Dashboard extends CI_Controller {
 		$session_user = $this->session->userdata('email_address');
 		if($this->input->post('submit')){
 			$userid = $this->dashboard_model->get_userid($session_user);
-			echo $this->dashboard_model->get_userid($session_user);
 			$this->load->library('form_validation');
 			$this->form_validation->set_error_delimiters('<div class="errors"><p>', '</p></div>');
 			$this->form_validation->set_rules('title', 'Title', 'required|max_length[100]');
@@ -91,11 +92,10 @@ class Dashboard extends CI_Controller {
 					$res = $this
 						->dashboard_model
 						->create_message($info);
-				if ($res == FALSE) {
-					# If didn't work, show error
-					$this->session->set_flashdata('error_msg', '<div class="success message">Error: Message was not created.</div>');
-				}
 			}
+		}elseif($this->input->get('delete')){
+			$messageid = $this->input->get('delete');
+			$this->dashboard_model->delete_message($messageid);
 		}
 
 		$data = array();
@@ -103,6 +103,26 @@ class Dashboard extends CI_Controller {
 
 		$this->load->view('templates/header');
 		$this->load->view('dashboard/messages', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function edit_message(){
+		$this->load->model('dashboard_model');
+		$messageid = $this->input->get('id');
+		if($this->input->post('update')){
+			$info = array(
+					'title'=>$this->input->post('title'),
+					'message'=>$this->input->post('message')
+					);
+			$this->dashboard_model->edit_message($messageid, $info);
+			redirect('dashboard/messages');
+		}
+
+		$data = array();
+		$data['message'] = $this->dashboard_model->retrieve_message($messageid);
+
+		$this->load->view('templates/header');
+		$this->load->view('dashboard/edit_message', $data);
 		$this->load->view('templates/footer');
 	}
 }

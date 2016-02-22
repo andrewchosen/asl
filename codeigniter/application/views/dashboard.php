@@ -3,18 +3,16 @@
 <div class="class">
 <section id="messages" class="one-half column">
 	<h2>Message Board</h2>
-	<article>
-		<h3><a href="#">Lorem ipsum things will go here showing the latest message...</a></h3>
-		<p class="sub">POSTED BY ANDREW LANCASTER ON 2/6/2016</p>
-	</article>
-	<article>
-		<h3><a href="#">Lorem ipsum things will go here showing the latest message...</a></h3>
-		<p class="sub">POSTED BY ANDREW LANCASTER ON 2/6/2016</p>
-	</article>
-	<article>
-		<h3><a href="#">Lorem ipsum things will go here showing the latest message...</a></h3>
-		<p class="sub">POSTED BY ANDREW LANCASTER ON 2/6/2016</p>
-	</article>
+	<?php
+	$i = 1;
+	foreach ($messages as $message) { ?>
+		<article>
+			<h3><a href="#"><?php echo $message->title; ?></a></h3>
+			<p class="sub">Created by <?php echo $message->first_name; ?> <?php echo $message->last_name; ?> on <?php echo $message->created; ?></p>
+		</article>
+	<?php 
+	if ($i++ == 4) break;
+	} ?>
 </section>
 <section id="projects" class="one-half column">
 	<h2>Current Projects</h2>

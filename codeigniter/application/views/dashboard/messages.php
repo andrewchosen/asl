@@ -19,20 +19,28 @@
 
 	<p>
 	<?php echo form_submit('submit', 'Submit'); ?>
+	<?php form_close(); ?>
 	</p>
 </section>
 <section id="message-board">
 	<?php
 
 	?>
-		<?php
-		foreach ($messages as $message) { ?>
+		<?php foreach ($messages as $message) { ?>
 		<article>
 			<h2><?php echo $message->title; ?></h2>
-			<p>Created by <?php echo $message->first_name; ?> on <?php echo $message->created; ?></p>
+			<p class="info">Created by <?php echo $message->first_name; ?> <?php echo $message->last_name; ?> on <?php echo $message->created; ?> |  
+				<?php
+				if ($this->session->userdata('email_address') == $message->email_address) {
+					echo "<a href='edit_message?id=" . $message->messageid . "'>Edit</a>";
+					echo " | ";
+					echo "<a href='?delete=" . $message->messageid . "'>Delete</a>";
+				}
+				?>
+			</p>
 			<div class="body">
 				<p><?php echo $message->message; ?></p>
 			</div>
 		</article>
-		 <?php } ?>
+		<?php } ?>
 </section>
