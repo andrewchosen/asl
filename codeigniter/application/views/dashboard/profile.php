@@ -34,7 +34,7 @@
 		<input type="file" name="avatar" size="20" />
 		<?php 
 			if ($user[1]->avatar != NULL) {
-				echo "<img src='".base_url()."uploads/".$user[1]->avatar."' alt='".$user[1]->first_name." ".$user[1]->last_name."' />";
+				echo "<p><img src='".base_url()."uploads/".$user[1]->avatar."' alt='".$user[1]->first_name." ".$user[1]->last_name."' class='avatar' /></p>";
 			}
 		?>
 	</div>

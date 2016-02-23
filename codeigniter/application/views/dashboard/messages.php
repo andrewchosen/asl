@@ -28,6 +28,9 @@
 	?>
 		<?php foreach ($messages as $message) { ?>
 		<article>
+			<?php if($message->avatar){ ?>
+				<img src="<?php echo base_url().'uploads/'.$message->avatar ?>" class="avatar">
+			<?php } ?>
 			<h2><?php echo $message->title; ?></h2>
 			<p class="info">Created by <?php echo $message->first_name; ?> <?php echo $message->last_name; ?> on <?php echo $message->created; ?> |  
 				<?php
