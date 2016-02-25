@@ -42,13 +42,11 @@ class Dashboard extends CI_Controller {
 
             $this->load->library('upload', $config);
 			$this->load->library('form_validation');
-			echo $this->upload->data();
 			$this->form_validation->set_rules('email_address2', 'Email Address', 'required|valid_email');
 			$this->form_validation->set_rules('first_name', 'First Name', 'required|max_length[50]');
 			$this->form_validation->set_rules('last_name', 'Last Name', 'required|max_length[50]');
 			$this->form_validation->set_rules('bio', 'Bio', 'max_length[255]');
 			$file = NULL;
-			echo $this->upload->do_upload('avatar');
 			if ( ! $this->upload->do_upload('avatar')){
                 echo $this->upload->display_errors();
             }else{
@@ -137,6 +135,49 @@ class Dashboard extends CI_Controller {
 
 		$this->load->view('templates/header');
 		$this->load->view('dashboard/edit_message', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function clients(){
+		$this->load->model('dashboard_model');
+		$session_user = $this->session->userdata('email_address');
+		if($this->input->post('create')){
+			$config['upload_path']          = './uploads/clients/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 1024;
+            $config['max_width']            = 1024;
+            $config['max_height']           = 768;
+            $config['overwrite']			= FALSE;
+
+            $this->load->library('upload', $config);
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('name', 'Client Name', 'required|max_length[100]');
+			$file = "Default";
+			if ( ! $this->upload->do_upload('image')){
+                echo $this->upload->display_errors();
+            }else{
+                $file = $this->upload->file_name;
+            }
+			if ( $this->form_validation->run() !== false ) {
+				$info = array(
+					'name'=>$this->input->post('name'),
+					'client_image'=>$file
+					);
+					$res = $this
+						->dashboard_model
+						->create_client($info);
+				if ($res !== FALSE) {
+					redirect('dashboard/clients');
+				}
+			}
+		}
+		$result = $this
+					->dashboard_model
+					->view_clients();
+		$data['clients'] = $result;
+
+		$this->load->view('templates/header');
+		$this->load->view('dashboard/clients', $data);
 		$this->load->view('templates/footer');
 	}
 }

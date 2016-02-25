@@ -208,6 +208,23 @@ h1 {
 	height: auto;
 }
 
+/*CLIENTS PAGE*/
+
+#client-list article {
+	padding: 1.25%;
+	background: #fff;
+}
+
+#client-list article h3 {
+	text-align: center;
+	font-size: 2.5rem;
+}
+
+#client-list article img {
+	width: 100%;
+	height: auto;
+}
+
 /*LOGIN & REGISTER*/
 
 #register, #login {

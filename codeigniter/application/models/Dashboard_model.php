@@ -74,7 +74,18 @@ class Dashboard_model extends CI_Model
 	    $this->db->where('messageid', $messageid);
 		$this->db->update('messages', $info);
 		$this->session->set_flashdata('success_msg', '<div class="success message">Your message has been successfully updated.</div>');
+	}
 
+	public function create_client($info){
+		$this->db->insert('clients', $info);
+		$this->session->set_flashdata('success_msg', '<div class="success message">Your client has been created.</div>');
+	}
+
+	public function view_clients(){
+		$this->db->select('name, client_image');
+		$this->db->from('clients');
+		$query = $this->db->get();
+		return $query->result();
 	}
 }
 

@@ -19,7 +19,9 @@
 					if (isset($session_user)) {
 						echo '<li><a href="' . base_url() . 'dashboard/messages">Messages</a></li>';
 					} ?>
-					<li><a href="#">Clients</a></li>
+					<?php if (isset($session_user)) {
+						echo '<li><a href="' . base_url() . 'dashboard/clients">Clients</a></li>';
+					} ?>
 					<li><a href="#">Projects</a></li>
 					<?php
 					if (isset($session_user)) {
