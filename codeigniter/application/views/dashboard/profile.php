@@ -1,5 +1,5 @@
+<h1>Profile</h1>
 <section id="profile">
-	<h2>Profile</h2>
 	<?php echo $this->session->flashdata('success_msg'); ?>
 	<p><strong>Member Since:</strong> <?php echo $user[1]->date_created ?></p>
 

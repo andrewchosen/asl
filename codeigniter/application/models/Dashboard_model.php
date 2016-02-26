@@ -82,10 +82,27 @@ class Dashboard_model extends CI_Model
 	}
 
 	public function view_clients(){
-		$this->db->select('name, client_image');
+		$this->db->select('*');
 		$this->db->from('clients');
+		$this->db->order_by('created', "DESC");
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+	public function create_project($info){
+		$this->db->insert('projects', $info);
+		$this->session->set_flashdata('success_msg', '<div class="success message">Your project has been created.</div>');
+	}
+
+	public function view_projects(){
+		$this->db->select('*');
+		$this->db->from('projects');
+		$this->db->join('clients', 'clients.clientid = projects.clientid');
+		$this->db->order_by('projects.created', 'DESC');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	
 }
 

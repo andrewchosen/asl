@@ -18,17 +18,9 @@
 					$session_user = $this->session->userdata('email_address');
 					if (isset($session_user)) {
 						echo '<li><a href="' . base_url() . 'dashboard/messages">Messages</a></li>';
-					} ?>
-					<?php if (isset($session_user)) {
 						echo '<li><a href="' . base_url() . 'dashboard/clients">Clients</a></li>';
-					} ?>
-					<li><a href="#">Projects</a></li>
-					<?php
-					if (isset($session_user)) {
+						echo '<li><a href="' . base_url() . 'dashboard/projects">Projects</a></li>';
 						echo '<li><a href="' . base_url() . 'dashboard/profile">Profile</a></li>';
-					} ?>
-					<?php
-					if (isset($session_user)) {
 						echo '<li><a href="' . base_url() . 'logout">Logout</a></li>';
 					} ?>
 					

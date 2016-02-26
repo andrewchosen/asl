@@ -23,6 +23,8 @@ class Dashboard extends CI_Controller {
 		}
 
 		$data['messages'] = $this->dashboard_model->view_messages($session_user);
+		$data['clients'] = $this->dashboard_model->view_clients();
+		$data['projects'] = $this->dashboard_model->view_projects();
 
 		$this->load->view('templates/header');
 		$this->load->view('dashboard', $data);
@@ -35,9 +37,9 @@ class Dashboard extends CI_Controller {
 		if($this->input->post('update')){
 			$config['upload_path']          = './uploads/';
             $config['allowed_types']        = 'gif|jpg|png';
-            $config['max_size']             = 1024;
+            $config['max_size']             = 10240;
             $config['max_width']            = 1024;
-            $config['max_height']           = 768;
+            $config['max_height']           = 1024;
             $config['overwrite']			= TRUE;
 
             $this->load->library('upload', $config);
@@ -144,9 +146,9 @@ class Dashboard extends CI_Controller {
 		if($this->input->post('create')){
 			$config['upload_path']          = './uploads/clients/';
             $config['allowed_types']        = 'gif|jpg|png';
-            $config['max_size']             = 1024;
+            $config['max_size']             = 10240;
             $config['max_width']            = 1024;
-            $config['max_height']           = 768;
+            $config['max_height']           = 1024;
             $config['overwrite']			= FALSE;
 
             $this->load->library('upload', $config);
@@ -180,4 +182,42 @@ class Dashboard extends CI_Controller {
 		$this->load->view('dashboard/clients', $data);
 		$this->load->view('templates/footer');
 	}
+
+	public function projects(){
+		$this->load->model('dashboard_model');
+
+		if($this->input->post('create')){
+			$this->load->library('form_validation');
+			$this->form_validation->set_error_delimiters('<div class="errors"><p>', '</p></div>');
+			$this->form_validation->set_rules('description', 'Project Description', 'required|max_length[100]');
+			$this->form_validation->set_rules('url', 'Project URL', 'required|max_length[255]');
+			if ( $this->form_validation->run() !== false ) {
+				$info = array(
+					'description'=>$this->input->post('description'),
+					'url'=>$this->input->post('url'),
+					'clientid'=>$this->input->post('client')
+					);
+				$res = $this
+					->dashboard_model
+					->create_project($info);
+				if ($res !== FALSE) {
+					redirect('dashboard/projects');
+				}
+			}
+		}
+
+		$data['clients'] = $this
+					->dashboard_model
+					->view_clients();
+
+		$data['projects'] = $this
+					->dashboard_model
+					->view_projects();
+
+		$this->load->view('templates/header');
+		$this->load->view('dashboard/projects', $data);
+		$this->load->view('templates/footer');
+	}
+
+	
 }

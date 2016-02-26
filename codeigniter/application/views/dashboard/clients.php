@@ -17,15 +17,25 @@
 	</p>
 
 	<p>
-	<?php echo form_submit('create', 'Add Client'); ?>
+	<?php echo form_submit('create', 'Add Client', 'class="button-primary"'); ?>
 	<?php form_close(); ?>
 </section>	
 <section id="client-list">
 	<?php
-	foreach ($clients as $client) { ?>
+	$i = 0;
+	foreach ($clients as $client) { 
+		if($i === 0){
+			echo "<div class='row'>";
+		}?>
 		<article class="one-third column">
 			<img src="<?php echo base_url().'uploads/clients/'.$client->client_image; ?>" />
 			<h3><?php echo $client->name; ?></h3>
 		</article>
-	<?php } ?>
+	<?php 
+		$i++;
+		if ($i === 3) {
+			echo "</div>";
+			$i = 0;
+		}
+	} ?>
 </section>
