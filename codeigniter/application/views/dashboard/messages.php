@@ -1,7 +1,7 @@
 <a class="create button button-primary u-pull-right u-cf">New Message</a>
 <h1>Messages</h1>
 <?php echo $this->session->flashdata('success_msg'); ?>
-<section class="create-msg" style="display: none;">
+<section class="create-msg slide-target" style="display: none;">
 	<?php echo $this->session->flashdata('error_msg'); ?>
 	<?php echo form_open(base_url().'dashboard/messages'); ?>
 

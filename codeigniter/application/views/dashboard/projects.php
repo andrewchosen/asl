@@ -1,5 +1,6 @@
+<a class="create button button-primary u-pull-right u-cf">Add Project</a>
 <h1>Projects</h1>
-<section class="create-project">
+<section class="create-project slide-target" style="display:none;">
 	<?php echo $this->session->flashdata('error_msg'); ?>
 	<?php echo $this->session->flashdata('success_msg'); ?>
 	<?php echo form_open(base_url().'dashboard/projects'); ?>
@@ -31,7 +32,7 @@
 	</div>
 
 	<p>
-	<?php echo form_submit('create', 'Create Project', "class='button-primary'"); ?>
+	<?php echo form_submit('create', 'Submit'); ?>
 	<?php form_close(); ?>
 </section>
 <section id="project-list">

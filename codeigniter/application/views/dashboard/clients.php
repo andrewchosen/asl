@@ -1,5 +1,6 @@
+<a class="create button button-primary u-pull-right u-cf">Add Client</a>
 <h1>Clients</h1>
-<section id="create-client">
+<section id="create-client" class="slide-target" style="display: none;">
 	<?php echo $this->session->flashdata('error_msg'); ?>
 	<?php echo $this->session->flashdata('success_msg'); ?>
 	<?php echo form_open_multipart(base_url().'dashboard/clients'); ?>
@@ -17,7 +18,7 @@
 	</p>
 
 	<p>
-	<?php echo form_submit('create', 'Add Client', 'class="button-primary"'); ?>
+	<?php echo form_submit('create', 'Submit'); ?>
 	<?php form_close(); ?>
 </section>	
 <section id="client-list">

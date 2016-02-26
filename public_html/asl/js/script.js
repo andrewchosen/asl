@@ -6,7 +6,8 @@ $(document).ready(function(){
 
 	$('.create').click(function(e){
 		e.preventDefault();
-		$('.create-msg').slideToggle();
+
+		$('.slide-target').slideToggle();
 	});
 
 });

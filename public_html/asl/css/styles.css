@@ -52,7 +52,7 @@ header, footer {
 	background: #0b2240;
 }
 
-header .logo {
+header .logo a {
 	color: #FFF;
 	font-size: 2.5em;
 	font-weight: 900;
@@ -60,6 +60,8 @@ header .logo {
 	padding: 24px 0;
 	box-sizing: border-box;
 	margin: 0;
+	text-decoration: none;
+	display: block;
 }
 
 header nav {

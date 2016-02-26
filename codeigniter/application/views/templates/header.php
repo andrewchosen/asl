@@ -10,13 +10,13 @@
 <body>
 	<header>
 		<div class="container">
-			<div class="logo one-third column">Dashboard</div>
+			<div class="logo one-third column"><a href="<?php echo base_url() ?>">Dashboard</a></div>
 			<nav class="two-thirds column">
 				<ul>
-					<li><a href="<?php echo base_url(); ?>">Home</a></li>
 					<?php
 					$session_user = $this->session->userdata('email_address');
 					if (isset($session_user)) {
+						echo '<li><a href="' . base_url() . '">Home</a></li>';
 						echo '<li><a href="' . base_url() . 'dashboard/messages">Messages</a></li>';
 						echo '<li><a href="' . base_url() . 'dashboard/clients">Clients</a></li>';
 						echo '<li><a href="' . base_url() . 'dashboard/projects">Projects</a></li>';
